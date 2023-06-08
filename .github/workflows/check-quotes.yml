@@ -21,4 +21,7 @@ jobs:
           review-message: 引号检查通过
       - name: If failed
         if: steps.check-diff.outputs.result
-        run: exit 1
+        uses: ntsd/auto-request-changes-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          comment-body: 由于 `“……”` 未区分全半角，请使用 `「……」` 作为全角引号，`"..."` 作为半角引号。
