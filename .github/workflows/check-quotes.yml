@@ -16,7 +16,7 @@ jobs:
         run: echo "result=$(git diff @^ -- '*.md' | grep ^+.*[“”])" >> $GITHUB_OUTPUT
       - name: If passed
         if: steps.check-diff.outputs.result == ''
-        run: echo "No quotes found"
+        uses: hmarr/auto-approve-action@v3
       - name: If failed
         if: steps.check-diff.outputs.result
         run: exit 1
