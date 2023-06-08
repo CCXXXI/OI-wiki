@@ -10,7 +10,7 @@ jobs:
         with:
           fetch-depth: 2
       - run: |
-          if git diff -G[“”] HEAD^ -- '*.md' | grep ^+.*[“”]; then
+          if git diff @^ -- '*.md' | grep ^+.*[“”]; then
             echo '::error::由于 `“……”` 未区分全半角，请使用 `「……」` 作为全角引号，`"..."` 作为半角引号。'
             exit 1
           fi
