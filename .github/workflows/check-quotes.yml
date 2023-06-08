@@ -14,6 +14,9 @@ jobs:
       - name: Check diff
         id: check-diff
         run: echo "result=$(git diff @^ -- '*.md' | grep ^+.*[“”])" >> $GITHUB_OUTPUT
+      - name: If passed
+        if: !steps.check-diff.outputs.result
+        run: echo "No quotes found"
       - name: If failed
         if: steps.check-diff.outputs.result
         run: exit 1
