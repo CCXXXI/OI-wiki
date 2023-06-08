@@ -17,6 +17,8 @@ jobs:
       - name: If passed
         if: steps.check-diff.outputs.result == ''
         uses: hmarr/auto-approve-action@v3
+        with:
+          review-message: 引号检查通过
       - name: If failed
         if: steps.check-diff.outputs.result
         run: exit 1
